@@ -17,6 +17,16 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
   overflow-y: auto;
   width: v.$sidebar-width;
   background: var(--sidebar-bg);
+  // background-image: url('/assets/img/sidebar_background.png');
+  // background-repeat: no-repeat;
+  // background-position: bottom center;
+  
+  /* 2. 이미지 너비는 꽉 채우고 높이는 비율에 맞게 자동 설정 */
+  // background-size: 100% auto; 
+  
+  /* 3. 이미지의 상단부와 유사한 어두운 색을 배경색으로 지정하여 위쪽 공간을 자연스럽게 연결 */
+  // background-color: #10081F; /* 이미지의 어두운 배경색에 맞춰 조정 */
+  
   border-right: 1px solid var(--sidebar-border-color);
 
   /* Hide scrollbar for IE, Edge and Firefox */

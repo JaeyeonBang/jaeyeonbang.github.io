@@ -38,7 +38,12 @@ html {
 }
 
 body {
-  background: var(--main-bg);
+  //background: var(--main-bg);
+  background: url('/assets/img/background.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
     env(safe-area-inset-bottom) env(safe-area-inset-left);
   color: var(--text-color);
