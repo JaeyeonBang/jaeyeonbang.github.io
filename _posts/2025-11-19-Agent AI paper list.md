@@ -8,9 +8,9 @@ tags: [AI Agent, NLP, LLM]
 
 
 
-🔥: Recommended papers by masamasa59
-📖: Survey papers
-⚖️: Benchmark papers
+🔥: Recommended papers by masamasa59  
+📖: Survey papers  
+⚖️: Benchmark papers  
 
 
 ## [Planing]   
