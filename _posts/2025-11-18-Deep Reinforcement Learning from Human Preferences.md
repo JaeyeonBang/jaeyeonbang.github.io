@@ -24,9 +24,6 @@ Instruct GPT: T[**raining language models to follow instructions with human feed
     - 큰 문제로 확장 가능
     - 사용자 피드백을 **효율적(경제적)**으로 사용한다.
 
-### Related Works
-
-- 생략
 
 ### Preliminaries
 
@@ -63,7 +60,7 @@ Instruct GPT: T[**raining language models to follow instructions with human feed
 - Policy  $\pi : O \to A$  (e.g. LLM 모델)
 - reward function estimate $\hat{r} : O \times A \to \mathbb{R}$ (Reward Model)
     
-    ![image.png](../assets/post_imgs/Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image.png)
+    ![image.png](./2025-11-18-Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image.png)
     
 
 **Process**
@@ -75,7 +72,7 @@ Instruct GPT: T[**raining language models to follow instructions with human feed
 
 ### InstructGPT
 
-![image.png](../assets/post_imgs/Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image%201.png)
+![image.png](2025-11-18-Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image%201.png)
 
 - **1단계: 시연(demonstration) 데이터를 수집하고, 지도 학습 정책(supervised policy)을 훈련**
     - 레이블러(labeler)들은 입력 프롬프트 분포에 대해 원하는 행동의 시연을 제공
@@ -114,11 +111,11 @@ Instruct GPT: T[**raining language models to follow instructions with human feed
         
 - **Fitting the Reward Function**
     
-    ![image.png](../assets/post_imgs/Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image%202.png)
+    ![image.png](2025-11-18-Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image%202.png)
     
     - $\hat{P}[\sigma^1 \succ \sigma^2]$ : $\sigma^1$을 $\sigma^2$에 비해 선호할 확률
     
-    ![image.png](../assets/post_imgs/Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image%203.png)
+    ![image.png](2025-11-18-Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image%203.png)
     
     - **choose $\hat{r}$ to minimize the cross-entropy loss**
     - **InstructGPT**
@@ -154,7 +151,7 @@ Instruct GPT: T[**raining language models to follow instructions with human feed
 
 ### Simulated Robotics
 
-![image.png](../assets/post_imgs/Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image%204.png)
+![image.png](2025-11-18-Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image%204.png)
 
 - 단 700개의 **인간 피드백** 만으로 훈련된 에이전트가 실제 보상으로 훈련된 **RL 기준선에 거의 근접**하는 성능을 달성했다. 이는 인간의 피드백의 정보 밀도가 높음을 시사
 - 1400개의 가상 피드백으로 학습한 경우, 일부 태스크에서는 실제 보상으로 직접 학습한 기준선보다 오히려 약간 더 높은 성능
@@ -164,7 +161,7 @@ Instruct GPT: T[**raining language models to follow instructions with human feed
 
 ### Atari
 
-![image.png](../assets/post_imgs/Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image%205.png)
+![image.png](2025-11-18-Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image%205.png)
 
 - 가상 피드백을 사용한 학습이 기준선 RL 성능에 근접
 - 실제 인간 피드백은 동일한 수의 가상 피드백보다 **다소 낮은** 성능
@@ -173,7 +170,7 @@ Instruct GPT: T[**raining language models to follow instructions with human feed
     - 하지만 인간 평가자는 에이전트가 다른 차를 추월하려는 **'시도'만 보여도 긍정적인 피드백**을 주는 경향이 있다.
     - 이러한 인간의 의도 기반 평가는 효과적인 보상 형성으로 작용하여, **희소한 보상 신호 문제를 해결**하고 에이전트가 기준선을 능가하는 성능을 보이도록 도움
         
-        ![image.png](../assets/post_imgs/Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image%206.png)
+        ![image.png](2025-11-18-Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image%206.png)
         
 
 ### Novel behaviors
@@ -188,208 +185,15 @@ Instruct GPT: T[**raining language models to follow instructions with human feed
     - no regularization: L2 정규화 제거
     - target: 비교하여 $\hat{r}$ 을 학습시키는 대신, MSE를 사용하여 학습시킴
     
-    ![image.png](../assets/post_imgs/Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image%207.png)
+    ![image.png](2025-11-18-Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image%207.png)
     
-    ![image.png](../assets/post_imgs/Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image%208.png)
+    ![image.png](2025-11-18-Deep%20Reinforcement%20Learning%20from%20Human%20Preferences/image%208.png)
     
     - '온라인 쿼리 없음(no online queries)' 조건이 **크게 실패**
     - 무작위적으로 초기화 된 초기 상태 공간과, 어느 정도 학습이 진행된 상태 공간이 매우 다름
         
         → 보상 모델과 정책이 반드시 **상호작용적으로(interactively)**, 함께 진화해야 한다
         
-
-## Codes
-
-[huggingface TRL - Transformer Reinforcement Learning](https://huggingface.co/docs/trl/index#trl---transformer-reinforcement-learning)
-
-- PPO
-    
-    ```python
-    # Copyright 2020-2025 The HuggingFace Team. All rights reserved.
-    #
-    # Licensed under the Apache License, Version 2.0 (the "License");
-    # you may not use this file except in compliance with the License.
-    # You may obtain a copy of the License at
-    #
-    #     http://www.apache.org/licenses/LICENSE-2.0
-    #
-    # Unless required by applicable law or agreed to in writing, software
-    # distributed under the License is distributed on an "AS IS" BASIS,
-    # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    # See the License for the specific language governing permissions and
-    # limitations under the License.
-    
-    # /// script
-    # dependencies = [
-    #     "trl",
-    #     "peft",
-    #     "trackio",
-    #     "kernels",
-    # ]
-    # ///
-    
-    import os
-    import shutil
-    
-    import torch
-    from accelerate import PartialState
-    from datasets import load_dataset
-    from transformers import (
-        AutoModelForCausalLM,
-        AutoModelForSequenceClassification,
-        AutoTokenizer,
-        HfArgumentParser,
-    )
-    
-    from trl import (
-        ModelConfig,
-        PPOConfig,
-        PPOTrainer,
-        ScriptArguments,
-        get_kbit_device_map,
-        get_peft_config,
-        get_quantization_config,
-    )
-    
-    # Enable logging in a Hugging Face Space
-    os.environ.setdefault("TRACKIO_SPACE_ID", "trl-trackio")
-    
-    """
-    python -i examples/scripts/ppo/ppo.py \
-        --dataset_name trl-internal-testing/descriptiveness-sentiment-trl-style \
-        --dataset_train_split descriptiveness \
-        --learning_rate 3e-6 \
-        --output_dir pythia-1b-deduped-descriptiveness-sentiment-trl-style-ppo \
-        --per_device_train_batch_size 64 \
-        --gradient_accumulation_steps 1 \
-        --total_episodes 10000 \
-        --model_name_or_path EleutherAI/pythia-1b-deduped \
-        --missing_eos_penalty 1.0
-    
-    accelerate launch --config_file examples/accelerate_configs/deepspeed_zero3.yaml \
-        examples/scripts/ppo/ppo.py \
-        --dataset_name trl-internal-testing/descriptiveness-sentiment-trl-style \
-        --dataset_train_split descriptiveness \
-        --output_dir pythia-1b-deduped-descriptiveness-sentiment-trl-style-ppo \
-        --num_ppo_epochs 1 \
-        --num_mini_batches 1 \
-        --learning_rate 3e-6 \
-        --per_device_train_batch_size 1 \
-        --gradient_accumulation_steps 16 \
-        --total_episodes 10000 \
-        --model_name_or_path EleutherAI/pythia-1b-deduped \
-        --sft_model_path EleutherAI/pythia-1b-deduped \
-        --reward_model_path EleutherAI/pythia-1b-deduped \
-        --local_rollout_forward_batch_size 1 \
-        --missing_eos_penalty 1.0
-    """
-    
-    if __name__ == "__main__":
-        parser = HfArgumentParser((ScriptArguments, PPOConfig, ModelConfig))
-        script_args, training_args, model_args = parser.parse_args_into_dataclasses()
-        # remove output_dir if exists
-        shutil.rmtree(training_args.output_dir, ignore_errors=True)
-    
-        ################
-        # Model & Tokenizer
-        ################
-        dtype = model_args.dtype if model_args.dtype in ["auto", None] else getattr(torch, model_args.dtype)
-        model_kwargs = dict(
-            revision=model_args.model_revision,
-            attn_implementation=model_args.attn_implementation,
-            dtype=dtype,
-        )
-        quantization_config = get_quantization_config(model_args)
-        if quantization_config is not None:
-            # Passing None would not be treated the same as omitting the argument, so we include it only when valid.
-            model_kwargs["device_map"] = get_kbit_device_map()
-            model_kwargs["quantization_config"] = quantization_config
-    		
-        tokenizer = AutoTokenizer.from_pretrained(
-            model_args.model_name_or_path, padding_side="left", trust_remote_code=model_args.trust_remote_code
-        )
-        tokenizer.add_special_tokens({"pad_token": "[PAD]"})
-        
-        #PPO에서 사용하는 value model <- critic역할을 담당, PPO논문에서 자세하게 다뤄진다고 합니다.
-        value_model = AutoModelForSequenceClassification.from_pretrained(
-            training_args.reward_model_path, trust_remote_code=model_args.trust_remote_code, num_labels=1
-        )
-        
-        # reward_model <- human feedback을 통해 학습한 reward model
-        reward_model = AutoModelForSequenceClassification.from_pretrained(
-            training_args.reward_model_path, trust_remote_code=model_args.trust_remote_code, num_labels=1
-        )
-        
-        # main model 
-        policy = AutoModelForCausalLM.from_pretrained(
-            training_args.sft_model_path, trust_remote_code=model_args.trust_remote_code
-        )
-    
-        peft_config = get_peft_config(model_args)
-        if peft_config is None:
-            ref_policy = AutoModelForCausalLM.from_pretrained(
-                training_args.sft_model_path, trust_remote_code=model_args.trust_remote_code
-            )
-        else:
-            ref_policy = None
-    
-        ################
-        # Dataset
-        ################
-        dataset = load_dataset(
-            script_args.dataset_name, name=script_args.dataset_config, split=script_args.dataset_train_split
-        )
-        eval_samples = 100
-        train_dataset = dataset.select(range(len(dataset) - eval_samples))
-        eval_dataset = dataset.select(range(len(dataset) - eval_samples, len(dataset)))
-        dataset_text_field = "prompt"
-    
-        def prepare_dataset(dataset, tokenizer):
-            """pre-tokenize the dataset before training; only collate during training"""
-    
-            def tokenize(element):
-                outputs = tokenizer(
-                    element[dataset_text_field],
-                    padding=False,
-                )
-                return {"input_ids": outputs["input_ids"]}
-    
-            return dataset.map(
-                tokenize,
-                batched=True,
-                remove_columns=dataset.column_names,
-                num_proc=training_args.dataset_num_proc,
-            )
-    
-        # Compute that only on the main process for faster data processing.
-        # see: https://github.com/huggingface/trl/pull/1255
-        with PartialState().local_main_process_first():
-            train_dataset = prepare_dataset(train_dataset, tokenizer)
-            eval_dataset = prepare_dataset(eval_dataset, tokenizer)
-    
-        ################
-        # Training
-        ################
-        trainer = PPOTrainer(
-            args=training_args,
-            processing_class=tokenizer,
-            model=policy,
-            ref_model=ref_policy,
-            reward_model=reward_model,
-            value_model=value_model,
-            train_dataset=train_dataset,
-            eval_dataset=eval_dataset,
-            peft_config=peft_config,
-        )
-        trainer.train()
-    
-        # Save and push to hub
-        trainer.save_model(training_args.output_dir)
-        if training_args.push_to_hub:
-            trainer.push_to_hub(dataset_name=script_args.dataset_name)
-    
-        trainer.generate_completions()
-    ```
     
 
 - references
